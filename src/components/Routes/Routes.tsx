@@ -5,6 +5,7 @@ import { Home } from '../Home/Home'
 import { News } from '../News/News'
 import { Profile } from '../Profile/Profile'
 import { Error404 } from '../Error/Error'
+import { PrivateRoute } from '../PrivateRoute/PrivateRoute'
 
 export const Routes: React.FC = () => {
   return (
@@ -31,9 +32,7 @@ export const Routes: React.FC = () => {
         <Route path='/news'>
           <News />
         </Route>
-        <Route path='/profile'>
-          <Profile />
-        </Route>
+        <PrivateRoute path='/profile' children={Profile} />
         <Route path='*'>
           <Error404 />
         </Route>
