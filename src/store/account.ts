@@ -5,7 +5,7 @@ import  { Action, Actions } from '../actions/actions'
 
 export type StateAccount = Readonly<UserInfo & ErrorInfo>
 
-const accountDefState: StateAccount = {
+export const accountDefState: StateAccount = {
   login: null,
   isAuth: false,
   isError: false

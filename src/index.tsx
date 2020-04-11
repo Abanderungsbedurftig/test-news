@@ -5,9 +5,15 @@ import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 
 import { App } from './components/App/App'
-import { account } from './store/account'
+import { account, accountDefState } from './store/account'
+import { saveStore, loadStore } from './utils/localStorage'
 
-const store = createStore(account, applyMiddleware(thunk))
+const initStore = loadStore() || accountDefState
+const store = createStore(account, initStore, applyMiddleware(thunk))
+
+store.subscribe(() => {
+  saveStore(store.getState())
+})
 
 ReactDOM.render(
   <Provider store={store}>
