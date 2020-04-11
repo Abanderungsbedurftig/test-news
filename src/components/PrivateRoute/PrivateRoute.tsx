@@ -6,7 +6,7 @@ import { PagePath } from '../../types'
 import { StateAccount } from '../../store/account'
 
 type PrivateRouteProps = {
-  children: React.FC
+  children: React.ReactElement
   path: PagePath
 }
 

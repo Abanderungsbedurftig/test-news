@@ -32,7 +32,9 @@ export const Routes: React.FC = () => {
         <Route path='/news'>
           <News />
         </Route>
-        <PrivateRoute path='/profile' children={Profile} />
+        <PrivateRoute path='/profile'>
+          <Profile />
+        </PrivateRoute>
         <Route path='*'>
           <Error404 />
         </Route>
