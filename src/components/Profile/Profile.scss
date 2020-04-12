@@ -1,0 +1,28 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+.profile-container {
+  @include centeredContainer;
+  display: flex;
+  align-items: flex-start;
+
+  img {
+    width: 320px;
+    border-radius: 50%;
+    border: 1px solid $middleGray;
+  }  
+
+  .profile-info {
+    margin-left: $blockPadding * 2;
+
+    h2 {
+      color: $darkGray;
+    }
+    
+    p {
+      font-size: 18px;
+      line-height: 1.5;
+      color: $middleGray;
+    }
+  }
+}

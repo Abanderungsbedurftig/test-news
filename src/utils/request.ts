@@ -1,4 +1,5 @@
-import { AuthFields } from '../types'
+import { AuthFields, NewsType } from '../types'
+import { newsApiUrl } from '../const'
 
 const mockUsersData: AuthFields[] = [
   {
@@ -20,4 +21,15 @@ export const fetchData = async (params: AuthFields): Promise<boolean> => {
 	return mockFetch(params)
 		.then(() => true)
 		.catch(() => false)
+}
+
+export const fetchNews = async (): Promise<NewsType[]> => {
+  return fetch(newsApiUrl)
+    .then((resp) => resp.json())
+    .then((data: any) => data.articles)
+		.catch((err) => {
+			// tslint:disable-next-line: no-console
+			console.error(err)
+			return []
+		})
 }

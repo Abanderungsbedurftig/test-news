@@ -1,0 +1,17 @@
+@import './vars';
+
+@mixin flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin centeredContainer {
+  width: $containerWidth;
+  margin: 80px auto;
+}

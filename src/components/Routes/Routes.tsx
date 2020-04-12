@@ -7,10 +7,12 @@ import { Profile } from '../Profile/Profile'
 import { Error404 } from '../Error/Error'
 import { PrivateRoute } from '../PrivateRoute/PrivateRoute'
 
+import './Routes.scss'
+
 export const Routes: React.FC = () => {
   return (
-    <div>
-      <div>
+    <div className='app'>
+      <header>
         <nav>
           <ul>
             <li>
@@ -24,7 +26,7 @@ export const Routes: React.FC = () => {
             </li>
           </ul>
         </nav>
-      </div>
+      </header>
       <Switch>
         <Route exact path='/'>
           <Home />

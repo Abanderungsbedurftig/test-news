@@ -7,6 +7,8 @@ import { StateAccount } from '../../store/account'
 import { AuthFields } from '../../types'
 import { Action, changeAccountAction } from '../../actions/actions'
 
+import './Login.scss'
+
 type ChangeEventFields = {
   name: string
   value: string
@@ -59,7 +61,7 @@ const LoginCmp: React.FC<LoginProps> = ({ isError, isAuth, onSubmit }) => {
   }
 
   return (
-    <div>
+    <div className='wrapper'>
       <form>
         <div className='form-group'>
           <input type='text' name='login' placeholder='Login:' value={login} onChange={changeValue}/>
@@ -67,7 +69,9 @@ const LoginCmp: React.FC<LoginProps> = ({ isError, isAuth, onSubmit }) => {
         <div className='form-group'>
           <input type='text' name='password' placeholder='Password:' value={password} onChange={changeValue}/>
         </div>
-        <button disabled={!isValid} onClick={submitForm}>Sign in</button>
+        <div className='form-group'>
+          <button disabled={!isValid} onClick={submitForm}>Sign in</button>
+        </div>
         {isError && <div className='error-message'>Имя пользователя или пароль введены не верно</div>}
       </form>
     </div>

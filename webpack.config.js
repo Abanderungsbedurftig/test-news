@@ -8,7 +8,7 @@ const PATH_DIST = path.resolve(__dirname, 'dist')
 const PATH_SRC = path.resolve(__dirname, 'src')
 
 module.exports = {
-  mode: 'development',  // process.env.NODE_ENV || 
+  mode: 'development',
   target: 'web',
   entry: {
     app: './src/index.tsx',
@@ -32,34 +32,15 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 2,
-              modules: {
-                mode: 'local',
-                localIdentName: '[name]--[local]--[hash:base64:5]',
-              },
-            },
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sassOptions: {
-                includePaths: [path.resolve(__dirname, 'src/styles')],
-              },
-              sourceMap: true,
-            },
-          }
-        ]
-      },
+        test: /\.(sass|scss)$/,
+        use: [{
+          loader: "style-loader"
+        }, {
+          loader: "css-loader"
+        }, {
+          loader: "sass-loader"
+        }]
+      }
     ],
   },
   plugins: [

@@ -1,0 +1,16 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+.news-container {
+  @include centeredContainer;
+
+  .news-item + .news-item {
+    margin-top: 20px;
+  }
+
+  .preloader {
+    width: 100%;
+    height: calc(100vh - 80px);
+    @include flexCenter;
+  }
+}

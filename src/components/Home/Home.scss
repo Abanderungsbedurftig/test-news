@@ -1,0 +1,12 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+.home-container {
+  @include centeredContainer;
+
+  h1 {
+    text-align: center;
+    font-size: 72px;
+    color: #333333;
+  }
+}
