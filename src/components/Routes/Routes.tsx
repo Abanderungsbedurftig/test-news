@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route, Link } from 'react-router-dom'
+import { Switch, Route, NavLink } from 'react-router-dom'
 
 import { Home } from '../Home/Home'
 import { News } from '../News/News'
@@ -16,13 +16,13 @@ export const Routes: React.FC = () => {
         <nav>
           <ul>
             <li>
-              <Link to='/'>Home</Link>
+              <NavLink exact to='/' activeClassName='nav-active'>Home</NavLink>
             </li>
             <li>
-              <Link to='/news'>News</Link>
+              <NavLink to='/news' activeClassName='nav-active'>News</NavLink>
             </li>
             <li>
-              <Link to='/profile'>Profile</Link>
+              <NavLink to='/profile' activeClassName='nav-active'>Profile</NavLink>
             </li>
           </ul>
         </nav>

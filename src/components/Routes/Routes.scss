@@ -26,6 +26,14 @@
           font-weight: 500;
           font-size: 24px;
 
+          .nav-active {
+            text-decoration: underline;
+          }
+
+          .nav-link {
+            text-decoration: none;
+          }
+
           & a {
             color: rgb(30, 30, 30);
             text-decoration: none;

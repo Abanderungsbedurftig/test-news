@@ -5,7 +5,7 @@ import { ThunkDispatch } from 'redux-thunk'
 
 import { StateAccount } from '../../store/account'
 import { AuthFields } from '../../types'
-import { Action, changeAccountAction } from '../../actions/actions'
+import { Action, changeAccountAction, clearErrorAction } from '../../actions/actions'
 
 import './Login.scss'
 
@@ -21,15 +21,20 @@ type LoginConnectedProps = {
 
 type LoginConnectedDispatch = {
   onSubmit: (params: AuthFields) => Promise<void>
+  onClearError: () => void
 }
 
 type LoginProps = LoginConnectedProps & LoginConnectedDispatch
 
-const LoginCmp: React.FC<LoginProps> = ({ isError, isAuth, onSubmit }) => {
+const LoginCmp: React.FC<LoginProps> = ({ isError, isAuth, onSubmit, onClearError }) => {
   const [login, setLogin] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [isValid, setIsValid] = useState<boolean>(false)
   const history = useHistory()
+
+  useEffect(() => {
+    return () => onClearError()
+  }, [])
 
   useEffect(() => {
     if (isAuth) {
@@ -73,6 +78,7 @@ const LoginCmp: React.FC<LoginProps> = ({ isError, isAuth, onSubmit }) => {
           <button disabled={!isValid} onClick={submitForm}>Sign in</button>
         </div>
         {isError && <div className='error-message'>Имя пользователя или пароль введены не верно</div>}
+        <span className='back-btn' onClick={() => history.goBack()}>&larr; Go back</span>
       </form>
     </div>
   )
@@ -82,7 +88,9 @@ const mapStateToProps = (state: StateAccount): LoginConnectedProps => ({ isError
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<StateAccount, void, Action>) => {
   return {
-    onSubmit: (params: AuthFields) => dispatch(changeAccountAction(params))
+    onSubmit: (params: AuthFields) => dispatch(changeAccountAction(params)),
+
+    onClearError: () => dispatch(clearErrorAction()),
   }
 }
 

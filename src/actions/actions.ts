@@ -34,3 +34,9 @@ export const changeAccountAction = (data: AuthFields): ThunkAction<Promise<void>
     }
   }
 }
+
+export const clearErrorAction = (): ThunkAction<void, StateAccount, void, Action> => {
+  return (dispatch: ThunkDispatch<StateAccount, void, Action>): void => {
+    dispatch(action(Actions.SET_AUTH_ERROR, { isError: false }))
+  }
+}

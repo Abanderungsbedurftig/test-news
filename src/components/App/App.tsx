@@ -11,7 +11,7 @@ export const App: React.FC = () => {
         <Route path='/login'>
           <Login />
         </Route>
-        <Route path='/'>
+        <Route path='*'>
           <Routes />
         </Route>
       </Switch>
